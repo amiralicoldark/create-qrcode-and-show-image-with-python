@@ -1,0 +1,25 @@
+import tkinter as tk
+from PIL import ImageTk
+import qrcode
+
+def show_qr_code_window(qr_image_data):
+    window = tk.Tk()
+    window.title("QR Code Generator")
+
+    photo_image = ImageTk.PhotoImage(qr_image_data)
+
+    label = tk.Label(window, image=photo_image)
+    label.pack(padx=20, pady=20)
+
+
+    label.image = photo_image
+
+    window.mainloop()
+
+
+user_input = input("متن یا عددی که می‌خواهید در کد QR باشد را وارد کنید: ")
+
+
+qr_pil_image = qrcode.make(user_input)
+
+show_qr_code_window(qr_pil_image)
